@@ -1,0 +1,8 @@
+[user]
+	name = Kaben Nanlohy
+	email = kaben.nanlohy@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[color]
+	ui = true

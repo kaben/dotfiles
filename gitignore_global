@@ -1,0 +1,6 @@
+*~
+# Ignore bytecompiled Python.
+*.py?
+
+# Ignore Vim swapfiles and sessions.
+*.sw?
