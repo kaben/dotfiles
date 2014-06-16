@@ -33,6 +33,11 @@ fi
 # If not running interactively, don't do anything else.
 [[ $- != *i* ]] && return
 
+# Source aliases.
+if [[ -f ~/.bash_alii ]]; then
+  source ~/.bash_alii
+fi
+
 # Source private bash files (private in that they don't live in my github).
 if [[ -f ~/.bash_private ]]; then
   source ~/.bash_private
@@ -70,10 +75,10 @@ function prompt {
 
   # two line prompt for skinny windows
   if [[ "$1" = "2" ]]; then
-    export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $GREENBOLD\u$RESET@$PURPLEBOLD\h$RESET: \\$ "
+    export PS1="\n$WHITE\t $CYAN\w\n  $GREEN\u$RESET@$PURPLE\h$RESET:\\$ "
   else
   # one line prompt for wide ones (default)
-    export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$WHITEBOLD@$PURPLEBOLD\h$RESET:$CYANBOLD\w$RESET \\$ "
+    export PS1="\n$WHITE\D{%Y%m%d-%H%M%S%z}$GREEN \u$WHITE@$PURPLE\h$RESET:$CYAN\w$RESET\\$ "
   fi
 }
 prompt
