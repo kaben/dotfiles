@@ -102,7 +102,7 @@ set t_Co=256
 source $VIMRUNTIME/ftplugin/man.vim
 
 set expandtab
-auto BufReadPost *.xx retab! 4
+auto BufReadPost *.xx retab! 2
 
 syntax on
 
