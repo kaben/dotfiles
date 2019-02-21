@@ -1,3 +1,49 @@
 #!/usr/bin/env bash
 
-echo "hi"
+: ${DOTFILES_REPO=https://github.com/kaben/dotfiles.git}
+: ${DOTFILES_DIR=${HOME}/.local/etc}
+: ${DOTS_CLONE_DIR=${DOTFILES_DIR}}
+: ${DOTS_REPO=https://github.com/EvanPurkhiser/dots.git}
+: ${DOTS_DIR=${HOME}/.local/lib/dots}}
+
+# Clone or update dots repository
+if [ -d "${DOTS_DIR}" ]; then
+  cd ${DOTS_DIR}
+  git pull origin master
+else
+  git clone ${DOTS_REPO} "${DOTS_DIR}"
+fi
+
+# Clone or update dotfiles repository
+if [ -d "${DOTFILES_DIR}" ]; then
+  cd ${DOTFILES_DIR}
+  git pull origin master
+else
+  git clone ${DOTFILES_REPO} "${DOTFILES_DIR}"
+  cd ${DOTFILES_DIR}
+fi
+
+source "${DOTS_DIR}/contrib/initialize"
+
+
+
+#echo "Setting up new dotfiles virtualenv..."
+#rm -rf .venv
+#python3 -m venv .venv
+#
+#echo "Installing requirements..."
+#source .venv/bin/activate
+#pip3 install -r requirements.txt &> /dev/null
+
+#read -r -p "Customize installation? [yes]: " confirm
+#  case "${confirm}" in
+#    no)
+#      echo
+#      echo "Installing with defaults specified in global_vars/vars.yml"
+#      ;;
+#    *)
+#      echo
+#      echo "Customizing installation..."
+#      ansible-playbook playbooks/configure.yml -i inventories/inventory
+#      ;;
+#  esac
