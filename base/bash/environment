@@ -1,0 +1,90 @@
+export EDITOR=vim
+export LESS="-X -R"
+
+
+
+HOME_LOCAL="$HOME/.local"
+if [ -d "$HOME_LOCAL" ]; then
+	export HOME_LOCAL
+	export PATH="$HOME_LOCAL/bin:$PATH"
+fi
+
+PYENV_ROOT=${PYENV_ROOT:="$HOME/.pyenv"}
+if [ -d "$PYENV_ROOT" ]; then
+	export PYENV_ROOT
+	export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+#PYVENV_ROOT=${PYVENV_ROOT:="${PYENV_ROOT}/plubins/pyenv-virtualenv"}
+#if [ -d "$PYVENV_ROOT" ]; then
+#  eval "$(pyenv virtualenv-init -)"
+#fi
+
+RVM_SH="/etc/profile.d/rvm.sh"
+if [ -f "$RVM_SH" ]; then
+  source "$RVM_SH"
+fi
+
+#NVM_DIR="$HOME/.nvm"
+#[ -d "$NVM_DIR" ] && export NVM_DIR
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#APT_LXD_DIR=/var/lib/lxd
+SNAP_LXD_DIR=/var/snap/lxd/common/lxd
+if [ -d "$SNAP_LXD_DIR" ] ; then
+  export LXD_DIR="$SNAP_LXD_DIR"
+fi
+
+JAVA_HOME=/mnt/Work/Scratch/jdk-10.0.2
+if [ -d "$JAVA_HOME" ] ; then
+  export JAVA_HOME
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+fi
+
+#JULIA_HOME="/${HOME}/julia-1.0.0"
+JULIA_HOME="/${HOME}/julia-1.0.2"
+if [ -d "$JULIA_HOME" ] ; then
+  export JULIA_HOME
+  export PATH="${JULIA_HOME}/bin:${PATH}"
+fi
+
+CLING_HOME="/mnt/Work/Repos/root-project/cling/cling-build/cling-debian-buster/sid-x86_64-0.6~dev-c63ab13"
+if [ -d "$CLING_HOME" ] ; then
+  #echo "found CLING_HOME: ${CLING_HOME}"
+  export CLING_HOME
+  export PATH="${CLING_HOME}/bin:${PATH}"
+#else
+#  echo "couldn't find CLING_HOME: ${CLING_HOME}"
+fi
+
+# added by Miniconda3 installer
+#MINICONDA3_HOME="/mnt/Work/local/miniconda3"
+#if [ -d "${MINICONDA3_HOME}" ] ; then
+#  export MINICONDA3_HOME
+#  export PATH="${MINICONDA3_HOME}/bin:$PATH"
+#fi
+
+KUBEADM_DIND_CLUSTER_PATH="${HOME}/.kubeadm-dind-cluster"
+if [ -d "${KUBEADM_DIND_CLUSTER_PATH}" ] ; then
+  export PATH="${KUBEADM_DIND_CLUSTER_PATH}:$PATH"
+fi
+
+#HELM_HOME="/mnt/Work/Repos/helm/linux-amd64"
+#if [ -d "${HELM_HOME}" ] ; then
+#  export PATH="${HELM_HOME}:$PATH"
+#fi
+
+source <(kubectl completion bash)
+source <(helm completion bash)
+
+BAZEL_DIR="${HOME}/.bazel"
+if [ -f "${BAZEL_DIR}/bin/bazel-complete.bash" ] ; then
+  source "${BAZEL_DIR}/bin/bazel-complete.bash"
+fi
+
+GO_HOME="${HOME}/go"
+if [ -d "${GO_HOME}" ] ; then
+  export PATH="${GO_HOME}/bin:${PATH}"
+fi

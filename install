@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ $_ == $0 ]] && echo "Please source me!" && exit 1
+
 : ${DOTFILES_REPO=https://github.com/kaben/dotfiles.git}
 : ${DOTFILES_DIR=${HOME}/.local/etc}
 : ${DOTS_CLONE_DIR=${DOTFILES_DIR}}
@@ -23,27 +25,5 @@ else
   cd ${DOTFILES_DIR}
 fi
 
+# Bootstrap dots
 source "${DOTS_DIR}/contrib/initialize"
-
-
-
-#echo "Setting up new dotfiles virtualenv..."
-#rm -rf .venv
-#python3 -m venv .venv
-#
-#echo "Installing requirements..."
-#source .venv/bin/activate
-#pip3 install -r requirements.txt &> /dev/null
-
-#read -r -p "Customize installation? [yes]: " confirm
-#  case "${confirm}" in
-#    no)
-#      echo
-#      echo "Installing with defaults specified in global_vars/vars.yml"
-#      ;;
-#    *)
-#      echo
-#      echo "Customizing installation..."
-#      ansible-playbook playbooks/configure.yml -i inventories/inventory
-#      ;;
-#  esac
