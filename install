@@ -5,8 +5,8 @@
 : ${DOTFILES_REPO=https://github.com/kaben/dotfiles.git}
 : ${DOTFILES_DIR=${HOME}/.local/etc}
 : ${DOTS_CLONE_DIR=${DOTFILES_DIR}}
-: ${DOTS_REPO=https://github.com/EvanPurkhiser/dots.git}
-: ${DOTS_DIR=${HOME}/.local/lib/dots}}
+: ${DOTS_REPO=https://github.com/kaben/dots.git}
+: ${DOTS_DIR=${HOME}/.local/lib/dots}
 
 # Clone or update dots repository
 if [ -d "${DOTS_DIR}" ]; then
