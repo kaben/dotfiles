@@ -83,8 +83,8 @@ fi
 #  export PATH="${HELM_HOME}:$PATH"
 #fi
 
-source <(kubectl completion bash)
-source <(helm completion bash)
+#source <(kubectl completion bash)
+#source <(helm completion bash)
 
 BAZEL_DIR="${HOME}/.bazel"
 if [ -f "${BAZEL_DIR}/bin/bazel-complete.bash" ] ; then
